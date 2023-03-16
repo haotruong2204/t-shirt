@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: tshirt_app
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app:cached
+      - /app/tmp
+      - gem-data:/usr/local/bundle
+    command: bundle exec puma -C config/puma.rb -e production
+    networks:
+      - tshirt-networks
+
+  redis:
+    image: redis
+    command: redis-server
+    container_name: tshirt.redis
+    volumes:
+      - redis-data:/var/shared/redis
+    networks:
+      - tshirt-networks
+
+  db:
+    image: mysql:5.7
+    container_name: tshirt.mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - tshirt-networks
+
+networks:
+  tshirt-networks:
+    name: tshirt
+    external: true
+
+volumes:
+  gem-data:
+  redis-data:
+  mysql_data:

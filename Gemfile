@@ -55,6 +55,8 @@ group :development, :test do
   # Convention
   gem "rubocop", require: false
   gem "rubocop-performance"
+  gem "rubocop-rspec"
+  gem "rubocop-rake"
 end
 
 group :development do

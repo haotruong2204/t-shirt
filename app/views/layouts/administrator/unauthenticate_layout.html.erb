@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +14,15 @@
   <body class="<%= yield :body_class %>">
     <%= render "shared/flash" %>
     <div class="unauthenticate__left">
+      <div class="intro-banner">
+        <div class="intro-banner__img">
+          <img src="<%= asset_path("agency.png")%>">
+        </div>
+        <div class="intro-banner__text">
+          <h1>#{Code} & Life</h1>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci provident culpa maiores ex veniam quaerat, veritatis tempore officia laborum qui distinctio suscipit ullam? Ipsa sapiente quas repellat nam facere. Doloribus.</p>
+        </div>
+      </div>
     </div>
     <div class="unauthenticate__right">
       <%= yield %>

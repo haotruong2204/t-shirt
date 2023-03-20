@@ -6,5 +6,6 @@ import "jquery";
 import "lodash";
 import "select2";
 import "flatpickr";
+import "custom/toast";
 
 Turbo.session.drive = false;

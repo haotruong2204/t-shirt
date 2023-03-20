@@ -10,37 +10,64 @@
   width: 100%;
   height: 100vh;
   @include flex(flex, normal, normal);
+  background: image-url("bg10.jpeg");
 
   &__left {
     width: 50%;
-    background-repeat: no-repeat;
-    background: image-url("background_unauthen.png");
-    background-size: cover;
+    @include flex(flex, center, center);
+
+    .intro-banner {
+      @include flex(flex, center, center);
+      flex-direction: column;
+      width: 500px;
+
+      &__img {
+        img {
+          width: 300px;
+        }
+      }
+
+      &__text {
+        text-align: center;
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
   }
 
   &__right {
     width: 50%;
     position: relative;
     @include flex(flex, center, center);
-    background: #fff;
 
     .box-login {
-      width: 360px;
+      width: 500px;
+      background: #fff;
+      border-radius: 8px;
+      height: 80vh;
+      padding: 68px;
+      @include flex(flex, center, normal);
+      flex-direction: column;
 
       .logo {
         margin-bottom: 28px;
         text-align: center;
         font-size: 40px;
-      }
 
+        img {
+          width: 60%;
+          height: auto;
+          max-width: 60%;
+        }
+      }
       .form-login {
         &__input {
           margin-bottom: 12px;
-
           label {
             display: flex;
           }
-
           input {
             width: 100%;
             background: #ecf4f5;
@@ -52,7 +79,6 @@
             padding: 0 8px;
             outline: none;
           }
-
           .error {
             color: #ec1115;
             font-size: 14px;
@@ -60,14 +86,12 @@
             margin-top: 4px;
             line-height: 1;
           }
-
           &--error {
             border-radius: 5px !important;
             background: #f7e6e6 !important;
             border-bottom: 2px solid #ec1111 !important;
           }
         }
-
         &__submit {
           margin-top: 16px;
           margin-bottom: 8px;
@@ -79,12 +103,11 @@
           height: 40px;
           line-height: 40px;
           font-size: 14px;
-          background: #453334;
+          background: #009ef7;
           cursor: pointer;
           font: 16px/1.6em $font;
         }
       }
-
       .registration-form {
         a {
           @include flex(flex, center, center);
@@ -96,7 +119,6 @@
         }
       }
     }
-
     .copyright {
       position: absolute;
       bottom: 0;
@@ -118,10 +140,6 @@
       width: 100%;
       padding-left: 15px;
       padding-right: 15px;
-      background: image-url("background_unauthen.png");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
       align-items: center;
       margin-top: 0 !important;
     }

@@ -16,7 +16,7 @@
   </div>
   <div class="header__user">
     <span><%= current_administrator_administrator.email %></span>
-    <%= link_to destroy_administrator_administrator_session_path do %>
+    <%= button_to destroy_administrator_administrator_session_path, method: :delete, data: { turbo: false }, class: "btn-out-style" do %>
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2F4858" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
         <circle cx="12" cy="7" r="4"></circle>

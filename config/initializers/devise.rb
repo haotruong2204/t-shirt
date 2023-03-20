@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '076c594b781ce74dd9aa43e100fbc4dae8be9cd8fb34405e6b4b18fca65179195420e7360a39c6f8e3fb54d7f2668332d77bd0afd18c99be782de4bdf1231d77'
+  # config.secret_key = '70b89fba3da22803b009faf83b0e304fa91521153c11a35b71eb1a08e59da2b424b10caae3c0d055c3b18067f02d3296c1eeb7e7dac9bcba1f535e3834e9a917'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '23625000a583dbc8221c776cdf035e5cf88ac240b581ab66a09991cb91dd6909424c8a7c4ff7d0ea0df47ca61e06c1a5682a57f496bbd24621f8e8b2ad68616b'
+  # config.pepper = '337bfeb2a34d2a59d968ed1bcd1617276d956a2782106566feb67d586eb7086a80e2ea1cb6a4e81117af4aa19e24c6b9408468cb2e55ac432c03ef94fff06169'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -263,10 +263,10 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html, :turbo_stream]
+  config.navigational_formats = []
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :get
+  config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -310,4 +310,14 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
+  config.jwt do |jwt|
+    jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
+    jwt.dispatch_requests = [
+      ["POST", %r{^/api/v1/staffs/login$}]
+    ]
+    jwt.revocation_requests = [
+      ["DELETE", %r{^/api/v1/staffs/logout}]
+    ]
+    jwt.expiration_time = 120.minutes.to_i
+  end
 end

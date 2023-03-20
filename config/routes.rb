@@ -26,4 +26,11 @@ Rails.application.routes.draw do
 
     # resources :reports, only: :index
   end
+
+  namespace :api do
+    namespace :v1 do
+      devise_for :staffs, path: "", path_names: { sign_in: "login", sign_out: "logout" },
+        skip: [:passwords]
+    end
+  end
 end

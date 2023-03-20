@@ -79,6 +79,13 @@ end
 
 # Authentication
 gem "devise"
+gem "devise-jwt"
+
+# Use Rack CORS forn handling Cross-Origin Resource Sharing
+gem "rack-cors"
+
+# Gem fast json
+gem "jsonapi-serializer"
 
 # Config
 gem "config"
@@ -99,7 +106,7 @@ gem "sidekiq"
 gem "pagy"
 
 # Search
-gem "ransack"
+gem "ransack", "~> 3.2.0"
 
 # Render error fields
 gem "simple_form"
